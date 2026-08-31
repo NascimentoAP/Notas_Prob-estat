@@ -1,0 +1,87 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[brazil]{babel} %Idioma
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage[dvips]{graphicx}
+\usepackage{rotating} % for sideways tables/figures
+\usepackage[normalem]{ulem}
+\usepackage{times} % modifica o estilo da página dos capítulos
+\usepackage{boxedminipage} 
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{calrsfs}
+\usepackage{multirow}
+\usepackage{titlesec}
+\usepackage{hyperref} % link interno e externo
+\usepackage[width=7.00cm, height=3.00cm]{geometry}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{fancyheadings}
+\usepackage{subfigure}
+\usepackage{indentfirst}[1.25]
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{pdfpages}
+ \usepackage{lipsum}
+\setcounter{tocdepth}{6}
+\setcounter{secnumdepth}{6}
+\setlength{\textheight}{50pc}
+\setlength{\textwidth}{38pc}
+\setlength{\oddsidemargin}{0.5cm}
+\setlength{\topmargin}{-0cm}
+
+% Definição de alguns símbolos usados com frequência
+\newcommand{\ini}{\noindent}
+\newcommand{\inic}{\hspace{5.5mm}}
+%
+\newcommand{\bff}[1]{\boldsymbol{#1}}
+\newcommand{\betab}{\bff{\beta}}
+\newcommand{\mub}{\bff{\mu}}
+\newcommand{\Sigmab}{\bff{\Sigma}}
+\newcommand{\xb}{\bff{x}}
+\newcommand{\Imb}{\bff{\Im}}
+\newcommand{\etab}{\bff{\eta}}
+\newcommand{\gammab}{\bff{\gamma}}
+\newcommand{\Xb}{\bff{X}}
+\newcommand{\Yb}{\bff{Y}}
+\newcommand{\db}{\bff{d}}
+\newcommand{\bb}{\bff{b}}
+\newcommand{\cb}{\bff{c}}
+\newcommand{\yb}{\bff{y}}
+\newcommand{\Ob}{\bff{O}}
+\newcommand{\varepsilonb}{\bff{\varepsilon}}
+\newcommand{\alphab}{\bff{\alpha}}
+\newcommand{\thetab}{\bff{\theta}}
+\newcommand{\zetab}{\bff{\zeta}}
+\newcommand{\deltab}{\bff{\delta}}
+\newcommand{\Psib}{\bff{\Psi}}
+\newcommand{\ab}{\bff{a}}
+\newcommand{\taub}{\bff{\tau}}
+\usepackage{makeidx}
+\newtheorem{defin}{Definição}
+\newtheorem{teo}{Teorema}
+\newtheorem{prop}{Proposição}
+\newtheorem{lema}{Lema}
+\newtheorem{corolario}{Corolário}
+\newcommand{\exemplo}{\textbf{Exemplo.}}
+\newcommand{\exercicio}{\textbf{Exercício}}
+\newcommand{\exercR}{\textbf{Exercício Resolvido}}
+\usepackage{graphicx}
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+
+\pagestyle{headings}
+\pagenumbering{arabic}
+\setcounter{page}{2}
+\baselineskip=20pt %aumenta o espaçamento entre as linhas do texto
+\begin{document}
+\include{capa}
+\tableofcontents
+\setcounter{chapter}{0} \include{Descritiva}
+\setcounter{chapter}{1} \include{Probabilidade}
+\bibliographystyle{ieeetr} % plain abbrv newapa apa apalike plainnat amsplain abbrvnat unsrtnat ieeetr
+\bibliography{bibliografia}
+%\printbibliography 
+
+\end{document}
