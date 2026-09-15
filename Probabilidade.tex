@@ -581,7 +581,7 @@ Por exemplo, considere o lançamento de um dado equilibrado. Se $X$ representa o
 \end{equation}
 Consequentemente,
 \begin{equation}
-\mathbb{E}[X]=\sum_{x=1}^{6}xP(X=x)=\frac{1}{6}(1+2+3+4+5+6)=\frac{21}{6}=3,5.
+\mathbb{E}[X]=\sum_{x=1}^{6}x\mathbb P(X=x)=\frac{1}{6}(1+2+3+4+5+6)=\frac{21}{6}=3,5.
 \end{equation}
 
 Note que $3,5$ não é um possível resultado do lançamento de um dado. Esse valor representa o comportamento médio dos resultados quando imaginamos a repetição do experimento muitas vezes.
@@ -603,7 +603,7 @@ De maneira resumida, temos
 \begin{equation}
 \mathbb{E}[X] =
 \begin{cases}
-    \displaystyle\sum_x xP(X=x),\,\, \text{se $X$ é discreta}\\ \displaystyle\int_{-\infty}^{+\infty}x f_X(x),dx,\,\, \text{se $X$ é contínua}.
+    \displaystyle\sum_x x\mathbb P(X=x),\,\, \text{se $X$ é discreta}\\ \displaystyle\int_{-\infty}^{+\infty}x f_X(x),dx,\,\, \text{se $X$ é contínua}.
 \end{cases}
 \end{equation}
 
@@ -648,14 +648,13 @@ Essa expressão é equivalente à definição anterior e, em muitos problemas, s
 
 Se $X$ é uma variável aleatória discreta com função de probabilidade $p(x)=P(X=x)$ e média $\mu=\mathbb{E}[X]$, então
 \begin{equation}
-\operatorname{Var}(X)
-=\sum_x (x-\mu)^2P(X=x).
+\operatorname{Var}(X)=\sum_x (x-\mu)^2\mathbb P(X=x).
 \end{equation}
 
 Equivalentemente, podemos utilizar
 \begin{equation}
 \operatorname{Var}(X)
-=\sum_x x^2P(X=x)-\mu^2.
+=\sum_x x^2\mathbb P(X=x)-\mu^2.
 \end{equation}
 
 Portanto, para calcular a variância de uma variável aleatória discreta, podemos primeiramente determinar $\mathbb{E}[X]$ e $\mathbb{E}[X^2]$ e, posteriormente, utilizar
