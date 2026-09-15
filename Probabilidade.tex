@@ -481,7 +481,222 @@ Assim, um jogo com a dinâmica da variável $Z$ os números que não são indica
 Observe que esta estrutura de gráfico e tabelas para representar as distribuições de probabilidade não são uteis para variáveis contínuas, e para estas usaremos outra representação. 
 
 \section{Função densidade de probabilidade}
-	
+	As funções densidade de probabilidade desempenham, no caso de variáveis aleatórias contínuas, um papel semelhante ao das funções de probabilidade no caso discreto. A principal diferença é que, para uma variável aleatória contínua, as probabilidades não são atribuídas diretamente a valores isolados, mas sim a \textbf{intervalos } do conjunto dos números reais.
+
+Em outras palavras, se \(X\) é uma variável aleatória contínua, uma função \(f_X:\mathbb{R}\to\mathbb{R}\) será chamada de \textit{função densidade de probabilidade} de \(X\) se satisfizer as seguintes propriedades:
+
+\begin{enumerate}
+    \item[(i)] $ f_X(x)\geq 0,\qquad \forall x\in\mathbb{R},$\\
+    \item[(ii)]$\int_{-\infty}^{+\infty}f_X(x),dx=1.$
+\end{enumerate}
+
+A probabilidade de \(X\) assumir um valor em determinado intervalo é obtida pela área sob a curva da função densidade nesse intervalo. Assim,
+
+\begin{equation}
+\mathbb P(a\leq X\leq b)=\int_a^b f_X(x),dx.
+\end{equation}
+
+Portanto, diferentemente do caso discreto, $f_X(x)$ não representa diretamente a probabilidade $\mathbb P(X=x)$. De fato, para uma variável aleatória contínua,
+
+\begin{equation}
+\mathbb P(X=x)=0,\qquad \forall x\in\mathbb{R}.
+\end{equation}
+
+Isso ocorre porque a probabilidade está associada à área de um intervalo, enquanto um único ponto possui comprimento nulo. Como consequência,
+
+\begin{equation}
+    \mathbb P(a<X<b)=\mathbb P(a\leq X<b)=\mathbb P(a<X\leq b)=\mathbb P(a\leq X\leq b).
+\end{equation}
+
+É importante observar ainda que a função densidade pode assumir valores maiores que \(1\). O que deve estar entre \(0\) e \(1\) é a probabilidade obtida pela integral da densidade sobre um conjunto, e não necessariamente o valor da própria função \(f_X(x)\).
+
+\exemplo
+\begin{enumerate}
+    \item[(i)] A função $f(x)=-x^2$ no intervalo $[-1,1]$ não é uma função densidade, pois, para $x=1$, temos $f(1)=-1<0$, fato que por si só já elimina a possibilidade de $f$ ser uma função densidade. Além disso,
+    \begin{equation}
+    \int_{-1}^{1}-x^2,dx=-\left[\frac{x^3}{3}\right]_{-1}^{1}=-\left(\frac{1}{3}+\frac{1}{3}\right)=-\frac{2}{3}\neq 1.
+\end{equation}
+Portanto, a função viola as duas condições necessárias para ser uma função densidade de probabilidade.
+
+\item[(ii)] Considere a função $f(x)=x+\frac{1}{2}$ no intervalo $[-1,1]$. Temos
+\begin{equation}
+\int_{-1}^{1}\left(x+\frac{1}{2}\right),dx
+=\left[\frac{x^2}{2}+\frac{x}{2}\right]_{-1}^{1}=1.
+\end{equation}
+Portanto, a função satisfaz a condição de que a integral sobre todo o domínio seja igual a $1$. Entretanto, para $x=-1$, temos
+\begin{equation}
+f(-1)=-1+\frac{1}{2}=-\frac{1}{2}<0.
+\end{equation}
+Assim, $f$ não é uma função densidade, pois viola apenas a condição de não negatividade.
+
+\item[(iii)] Considere agora a função $f(x)=x^2$ no intervalo $[-1,1]$. Como $x^2\geq0$ para todo $x\in[-1,1]$, a condição de não negatividade é satisfeita. Entretanto,
+\begin{equation}
+    \int_{-1}^{1}x^2\,dx
+    =\left[\frac{x^3}{3}\right]_{-1}^{1}
+    =\frac{2}{3}\neq1.
+\end{equation}
+Portanto, $f$ não é uma função densidade, pois, embora seja não negativa em todo o seu domínio, sua integral total é diferente de $1$.
+
+\end{enumerate}
+
+Ou seja, os exemplos (i), (ii) e (iii) mostram que nem toda função pode ser considerada uma função densidade de probabilidade. Portanto, antes de utilizarmos uma determinada função nesse contexto, devemos verificar se ela satisfaz as condições necessárias para ser classificada como uma função densidade de probabilidade.
+
+\section{Esperança e Variância}
+
+Até o momento, estudamos como descrever o comportamento de uma variável aleatória por meio de sua função de probabilidade, no caso discreto, ou de sua função densidade de probabilidade, no caso contínuo. Entretanto, muitas vezes estamos interessados em resumir algumas características importantes da distribuição utilizando apenas alguns valores numéricos.
+
+Duas das medidas mais importantes para esse propósito são a \textbf{esperança} e a \textbf{variância}. De maneira intuitiva, a esperança procura indicar em torno de qual valor os possíveis resultados da variável aleatória estão distribuídos, enquanto a variância mede o quanto esses resultados tendem a se afastar desse valor.
+
+\subsection{Esperança}
+
+Seja $X$ uma variável aleatória. A \textbf{esperança matemática}, também chamada de \textbf{valor esperado} ou \textbf{média de $X$}, é uma medida que procura representar o valor médio da variável aleatória quando o experimento é repetido um grande número de vezes.
+
+A esperança de $X$ será denotada por
+\begin{equation}
+\mathbb{E}[X]=\mu.
+\end{equation}
+
+É importante observar que $\mathbb{E}[X]$ não precisa ser um valor que a variável aleatória possa efetivamente assumir. Por exemplo, ao lançarmos um dado equilibrado, os possíveis resultados são $1,2,3,4,5$ e $6$, porém o valor esperado é $3,5$. Portanto, a esperança deve ser interpretada como uma medida de tendência central da distribuição, e não necessariamente como um possível resultado do experimento.
+
+A maneira como calculamos $\mathbb{E}[X]$ depende do tipo da variável aleatória. Para variáveis discretas utilizamos uma soma ponderada pelas probabilidades, enquanto para variáveis contínuas utilizamos uma integral ponderada pela função densidade.
+
+\subsubsection{Esperança de uma variável aleatória discreta}
+
+Seja $X$ uma variável aleatória discreta que assume os valores $x_1,x_2,\ldots$ com função de probabilidade
+\begin{equation}
+\mathbb P(X=x_i)=p(x_i).
+\end{equation}
+
+A esperança de $X$ é definida por
+\begin{equation}
+    \mathbb{E}[X]=\sum_i x_i\mathbb P(X=x_i)
+\end{equation}
+desde que essa soma esteja bem definida.
+
+Observe que cada possível valor $x_i$ é multiplicado pela probabilidade de sua ocorrência. Dessa forma, valores com maior probabilidade possuem maior influência sobre o valor da esperança.
+
+Por exemplo, considere o lançamento de um dado equilibrado. Se $X$ representa o número observado na face superior, então
+\begin{equation}
+\mathbb P(X=x)=\frac{1}{6},\qquad x=1,2,\ldots,6.
+\end{equation}
+Consequentemente,
+\begin{equation}
+\mathbb{E}[X]=\sum_{x=1}^{6}xP(X=x)=\frac{1}{6}(1+2+3+4+5+6)=\frac{21}{6}=3,5.
+\end{equation}
+
+Note que $3,5$ não é um possível resultado do lançamento de um dado. Esse valor representa o comportamento médio dos resultados quando imaginamos a repetição do experimento muitas vezes.
+
+\subsubsection{Esperança de uma variável aleatória contínua}
+
+No caso de uma variável aleatória contínua, não podemos calcular a esperança somando valores individuais, pois cada ponto possui probabilidade igual a zero. Nesse caso, utilizamos a função densidade de probabilidade.
+
+Seja $X$ uma variável aleatória contínua com função densidade $f_X(x)$. A esperança de $X$ definida no espaço $\Theta$ é definida por
+\begin{equation}
+\mathbb{E}[X]
+=\int_\Theta x f_X(x),dx,
+\end{equation}
+desde que a integral esteja bem definida.
+
+A interpretação é semelhante ao caso discreto. O termo $x$ representa um possível valor da variável, enquanto $f_X(x)$ determina como a massa de probabilidade está distribuída em torno desse valor. Assim, a integral determina o centro médio da distribuição.
+
+De maneira resumida, temos
+\begin{equation}
+\mathbb{E}[X] =
+\begin{cases}
+    \displaystyle\sum_x xP(X=x),\,\, \text{se $X$ é discreta}\\ \displaystyle\int_{-\infty}^{+\infty}x f_X(x),dx,\,\, \text{se $X$ é contínua}.
+\end{cases}
+\end{equation}
+
+\subsection{Variância}
+
+Conhecer apenas a esperança de uma variável aleatória nem sempre é suficiente para compreender seu comportamento. Duas variáveis aleatórias podem possuir exatamente a mesma esperança e, ainda assim, apresentar comportamentos bastante diferentes.
+
+Considere, por exemplo, duas variáveis aleatórias cujos valores estão concentrados em torno de sua média. Em outra situação, os valores podem estar muito espalhados, embora a média permaneça a mesma. Surge então a necessidade de uma medida capaz de quantificar essa dispersão.
+
+A \textbf{variância} de uma variável aleatória $X$ mede, em média, o quadrado da distância entre os valores de $X$ e sua esperança. Se
+\begin{equation}
+\mu=\mathbb{E}[X],
+\end{equation}
+então definimos
+\begin{equation}
+\operatorname{Var}(X)
+=\mathbb{E}\left[(X-\mu)^2\right].
+\end{equation}
+
+O termo $X-\mu$ representa o desvio de $X$ em relação à sua média. Entretanto, simplesmente calcular a média desses desvios não seria útil, pois desvios positivos e negativos poderiam se cancelar. Por esse motivo, consideramos o quadrado dos desvios.
+
+Como
+\begin{equation}
+(X-\mu)^2\geq0,
+\end{equation}
+temos necessariamente
+\begin{equation}
+\operatorname{Var}(X)\geq0.
+\end{equation}
+
+Quanto menor a variância, mais concentrados tendem a estar os valores de $X$ em torno de sua esperança. Quanto maior a variância, maior tende a ser a dispersão desses valores.
+
+Uma forma bastante útil para o cálculo da variância é
+\begin{equation}
+\operatorname{Var}(X)
+=\mathbb{E}[X^2]-\left(\mathbb{E}[X]\right)^2.
+\end{equation}
+
+Essa expressão é equivalente à definição anterior e, em muitos problemas, simplifica consideravelmente os cálculos.
+
+\subsubsection{Variância de uma variável aleatória discreta}
+
+Se $X$ é uma variável aleatória discreta com função de probabilidade $p(x)=P(X=x)$ e média $\mu=\mathbb{E}[X]$, então
+\begin{equation}
+\operatorname{Var}(X)
+=\sum_x (x-\mu)^2P(X=x).
+\end{equation}
+
+Equivalentemente, podemos utilizar
+\begin{equation}
+\operatorname{Var}(X)
+=\sum_x x^2P(X=x)-\mu^2.
+\end{equation}
+
+Portanto, para calcular a variância de uma variável aleatória discreta, podemos primeiramente determinar $\mathbb{E}[X]$ e $\mathbb{E}[X^2]$ e, posteriormente, utilizar
+\begin{equation}
+\operatorname{Var}(X)
+=\mathbb{E}[X^2]-\left(\mathbb{E}[X]\right)^2.
+\end{equation}
+
+\subsubsection{Variância de uma variável aleatória contínua}
+
+Se $X$ é uma variável aleatória contínua com função densidade $f_X(x)$ e média $\mu=\mathbb{E}[X]$, então
+\begin{equation}
+\operatorname{Var}(X)
+=\int_{-\infty}^{+\infty}(x-\mu)^2f_X(x),dx.
+\end{equation}
+
+Da mesma forma que no caso discreto, podemos escrever
+\begin{equation}
+\operatorname{Var}(X)
+=\mathbb{E}[X^2]-\left(\mathbb{E}[X]\right)^2,
+\end{equation}
+onde
+\begin{equation}
+\mathbb{E}[X^2]
+=\int_{-\infty}^{+\infty}x^2f_X(x),dx.
+\end{equation}
+
+Assim, embora as expressões utilizadas nos casos discreto e contínuo sejam diferentes, a ideia por trás da variância é exatamente a mesma: medir o grau de dispersão dos possíveis valores da variável aleatória em torno de sua esperança.
+
+De maneira resumida,
+\begin{equation}
+\operatorname{Var}(X)
+=\begin{cases}
+\displaystyle\sum_x (x-\mu)^2P(X=x), & \text{se $X$ é discreta},\\
+\displaystyle\int_{-\infty}^{+\infty}(x-\mu)^2f_X(x),dx, & \text{se $X$ é contínua}.
+\end{cases}
+\end{equation}
+
+ 
+
+ 
 	
 	
 	
