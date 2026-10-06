@@ -70,6 +70,20 @@
 \newcommand{\exercR}{\textbf{Exercício Resolvido}}
 \usepackage{graphicx}
 \renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\usepackage{enumitem}
+\newcommand{\exercicios}{
+    \section*{Exercícios}
+    \begin{enumerate}[label={[\arabic*]}]
+}
+\newcommand{\fimexercicios}{
+    \end{enumerate}
+}
+
+\newenvironment{subitens}{
+    \begin{enumerate}[label={(\alph*)}]
+}{
+    \end{enumerate}
+}
 
 \pagestyle{headings}
 \pagenumbering{arabic}

@@ -613,85 +613,140 @@ Conhecer apenas a esperança de uma variável aleatória nem sempre é suficient
 
 Considere, por exemplo, duas variáveis aleatórias cujos valores estão concentrados em torno de sua média. Em outra situação, os valores podem estar muito espalhados, embora a média permaneça a mesma. Surge então a necessidade de uma medida capaz de quantificar essa dispersão.
 
-A \textbf{variância} de uma variável aleatória $X$ mede, em média, o quadrado da distância entre os valores de $X$ e sua esperança. Se
-\begin{equation}
-\mu=\mathbb{E}[X],
-\end{equation}
-então definimos
-\begin{equation}
-\operatorname{Var}(X)
-=\mathbb{E}\left[(X-\mu)^2\right].
-\end{equation}
+A \textit{variância} de uma variável aleatória $X$ mede, em média, o quadrado da distância entre os valores de $X$ e sua esperança. Se então definimos
+\begin{equation*}
+    Var(X) =\mathbb{E}\left[(X-\mathbb{E}[X])^2\right].
+\end{equation*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figuras/variancia.png}
+    \caption{Representação geométrica da variância como a média dos quadrados das distâncias das observações em relação à média.}
+    \label{fig:variancia}
+\end{figure}
 
 O termo $X-\mu$ representa o desvio de $X$ em relação à sua média. Entretanto, simplesmente calcular a média desses desvios não seria útil, pois desvios positivos e negativos poderiam se cancelar. Por esse motivo, consideramos o quadrado dos desvios.
 
 Como
-\begin{equation}
-(X-\mu)^2\geq0,
-\end{equation}
+\begin{equation*}
+    (X-\mu)^2\geq0,
+\end{equation*}
 temos necessariamente
-\begin{equation}
-\operatorname{Var}(X)\geq0.
-\end{equation}
+\begin{equation*}
+    \operatorname{Var}(X)\geq0.
+\end{equation*}
 
 Quanto menor a variância, mais concentrados tendem a estar os valores de $X$ em torno de sua esperança. Quanto maior a variância, maior tende a ser a dispersão desses valores.
 
 Uma forma bastante útil para o cálculo da variância é
-\begin{equation}
-\operatorname{Var}(X)
-=\mathbb{E}[X^2]-\left(\mathbb{E}[X]\right)^2.
-\end{equation}
+\begin{equation*}
+    \operatorname{Var}(X) =\mathbb{E}[X^2]-\left(\mathbb{E}[X]\right)^2.
+\end{equation*}
 
 Essa expressão é equivalente à definição anterior e, em muitos problemas, simplifica consideravelmente os cálculos.
 
-\subsubsection{Variância de uma variável aleatória discreta}
 
-Se $X$ é uma variável aleatória discreta com função de probabilidade $p(x)=P(X=x)$ e média $\mu=\mathbb{E}[X]$, então
-\begin{equation}
-\operatorname{Var}(X)=\sum_x (x-\mu)^2\mathbb P(X=x).
-\end{equation}
+\begin{defin}
+    Se $X$ é uma variável aleatória discreta com função de probabilidade $p(x)=\mathbb P(X=x)$ e média $\mu=\mathbb{E}[X]$, então
+\begin{equation*}
+    \operatorname{Var}(X)=\sum_x (x-\mu)^2\mathbb P(X=x).
+\end{equation*}
 
 Equivalentemente, podemos utilizar
 \begin{equation}
-\operatorname{Var}(X)
-=\sum_x x^2\mathbb P(X=x)-\mu^2.
+    \operatorname{Var}(X) =\sum_x x^2\mathbb P(X=x)-\mu^2.
 \end{equation}
+
+\end{defin}
 
 Portanto, para calcular a variância de uma variável aleatória discreta, podemos primeiramente determinar $\mathbb{E}[X]$ e $\mathbb{E}[X^2]$ e, posteriormente, utilizar
 \begin{equation}
-\operatorname{Var}(X)
-=\mathbb{E}[X^2]-\left(\mathbb{E}[X]\right)^2.
+\operatorname{Var}(X) =\mathbb{E}[X^2]-\left(\mathbb{E}[X]\right)^2\,\,\footnote{Esta expressão vale tanto para caso discreto quanto contínuo, mudando assim apenas a forma com que se calcula as esperanças}
 \end{equation}
-
-\subsubsection{Variância de uma variável aleatória contínua}
 
 Se $X$ é uma variável aleatória contínua com função densidade $f_X(x)$ e média $\mu=\mathbb{E}[X]$, então
-\begin{equation}
-\operatorname{Var}(X)
-=\int_{-\infty}^{+\infty}(x-\mu)^2f_X(x),dx.
-\end{equation}
+\begin{equation*}
+    \operatorname{Var}(X) =\int_{-\infty}^{+\infty}(x-\mu)^2f_X(x),dx.
+\end{equation*}
 
-Da mesma forma que no caso discreto, podemos escrever
-\begin{equation}
-\operatorname{Var}(X)
-=\mathbb{E}[X^2]-\left(\mathbb{E}[X]\right)^2,
-\end{equation}
-onde
-\begin{equation}
-\mathbb{E}[X^2]
-=\int_{-\infty}^{+\infty}x^2f_X(x),dx.
-\end{equation}
+\begin{equation*}
+    \mathbb{E}[X^2] =\int_{-\infty}^{+\infty}x^2f_X(x),dx.
+\end{equation*}
 
 Assim, embora as expressões utilizadas nos casos discreto e contínuo sejam diferentes, a ideia por trás da variância é exatamente a mesma: medir o grau de dispersão dos possíveis valores da variável aleatória em torno de sua esperança.
 
 De maneira resumida,
-\begin{equation}
+\begin{equation*}
 \operatorname{Var}(X)
 =\begin{cases}
-\displaystyle\sum_x (x-\mu)^2P(X=x), & \text{se $X$ é discreta},\\
+\displaystyle\sum_x (x-\mu)^2\mathbb P(X=x), & \text{se $X$ é discreta},\\
 \displaystyle\int_{-\infty}^{+\infty}(x-\mu)^2f_X(x),dx, & \text{se $X$ é contínua}.
 \end{cases}
+\end{equation*}
+
+\section{Correlação entre Variáveis}
+
+A correlação é uma medida utilizada para quantificar a intensidade e a direção da relação linear entre duas variáveis aleatórias. Antes de defini-la formalmente, é conveniente introduzir a \textbf{covariância}. Sejam $X$ e $Y$ duas variáveis aleatórias com esperanças finitas. A covariância entre $X$ e $Y$ é definida por
+\begin{equation}
+\label{correlacao}
+    \operatorname{Cov}(X,Y)=\mathbb{E}\left[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])\right].
 \end{equation}
+
+Equivalentemente, podemos escrever a equação~\ref{correlacao} como 
+
+$$\operatorname{Cov}(X,Y)=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]\quad \footnote{Essa expressão deriva do desenvolvimento dos produtos dentro da definição e utilização de propriedades de esperança. }$$ 
+
+    Intuitivamente, a covariância indica como $X$ e $Y$ tendem a variar conjuntamente. Quando $\operatorname{Cov}(X,Y)>0$, valores de $X$ acima de sua média tendem a estar associados a valores de $Y$ também acima de sua média. Quando $\operatorname{Cov}(X,Y)<0$, ocorre o comportamento oposto: valores elevados de uma variável tendem a estar associados a valores menores da outra.
+
+Entretanto, a magnitude da covariância depende das unidades de medida de $X$ e $Y$, dificultando a comparação entre diferentes pares de variáveis. Para eliminar essa dependência de escala, utilizamos o \textbf{coeficiente de correlação de Pearson}, definido, para $\operatorname{Var}(X)>0$ e $\operatorname{Var}(Y)>0$, por
+\begin{equation}
+    \rho_{X,Y}=\frac{\operatorname{Cov}(X,Y)}{\sqrt{\operatorname{Var}(X)\operatorname{Var}(Y)}}.
+\end{equation}
+
+O coeficiente de correlação satisfaz $-1\leq\rho_{X,Y}\leq1$. Valores de $\rho_{X,Y}$ próximos de $1$ indicam uma forte associação linear positiva, enquanto valores próximos de $-1$ indicam uma forte associação linear negativa. Por outro lado, valores próximos de zero indicam ausência, ou baixa intensidade, de uma relação \textbf{linear} entre as variáveis.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.8\textwidth]{figuras/correlacao.png}
+    \caption{Representação gráfica de diferentes padrões de correlação entre duas variáveis aleatórias $X$ e $Y$: correlação positiva, correlação negativa e ausência de correlação linear.}
+    \label{fig:correlacao}
+\end{figure}
+
+É importante destacar que $\rho_{X,Y}=0$ não significa, em geral, que $X$ e $Y$ sejam independentes. Variáveis podem possuir uma forte relação não linear e, ainda assim, apresentar correlação igual a zero. Por outro lado, se $X$ e $Y$ são independentes e possuem segundos momentos finitos, então $\operatorname{Cov}(X,Y)=0$ e, consequentemente, $\rho_{X,Y}=0$, desde que ambas possuam variâncias positivas. Portanto, a correlação deve ser interpretada especificamente como uma medida de \textbf{associação linear}, e não como uma medida geral de dependência entre variáveis aleatórias.
+
+\exercicios
+
+    \item Considere uma sequência de lançamentos independentes de uma moeda honesta e de um dado honesto. Para $i=1,\ldots,N$, defina
+\begin{equation*}
+    X_i=
+    \begin{cases}
+        1, & \text{se a moeda resultar em cara},\\
+        0, & \text{se a moeda resultar em coroa},
+    \end{cases}
+    \qquad
+    Y_i=
+    \begin{cases}
+        -1, & \text{se o resultado do dado for par},\\
+        1, & \text{se o resultado do dado for ímpar}.
+    \end{cases}
+\end{equation*}
+Suponha ainda que os lançamentos da moeda e do dado sejam independentes e, para $m\leq N$, considere a variável aleatória
+\begin{equation*}
+    Z^{(m)}=\sum_{i=1}^{m}X_iY_i.
+\end{equation*}
+\begin{enumerate}
+    \item[(a)] Determine a distribuição de $Z^{(m)}$.
+    \item[(b)] Calcule $\mathbb E\left[Z^{(m)}\right]$ e $\operatorname{Var}\left(Z^{(m)}\right)$.
+    \item[(c)] Determine $\mathbb P\left(Z^{(m)}=0\right)$ em função de $m$.
+\end{enumerate}
+
+\fimexercicios
+
+
+
+
+
+
 
  
 
